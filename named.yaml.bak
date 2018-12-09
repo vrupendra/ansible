@@ -1,0 +1,27 @@
+--- # This is a test playbook to install named
+
+- hosts: DNS
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+  tasks:
+   - name: Install Bind Server
+     yum:  name={{ item}} state=latest
+     with_items:
+       - bind
+       - bind-devel
+       - bind-libs
+       - bind-utils
+     notify: 
+     - Start named service
+   - name: Ensure named is running
+     service: 
+       name: named
+       state: started
+  handlers:
+     - name: Start named service
+       service:
+         name: named
+         enabled: yes
+         state: restarted  
