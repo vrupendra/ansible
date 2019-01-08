@@ -1,7 +1,7 @@
 # This is the Local Inventory file
 
-[control]
-control ansible_connection=local
+#[control]
+#control ansible_connection=local
 
 [loadbalancer]
 lb01

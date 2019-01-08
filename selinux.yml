@@ -1,0 +1,10 @@
+---
+- hosts: all
+  
+  tasks:
+    - name: disable selinux
+      lineinfile:
+        path: /etc/sysconfig/selinux
+        regexp: '^SELINUX='
+        line: 'SELINUX=disabled'
+        validate: 'visudo -cf %s'

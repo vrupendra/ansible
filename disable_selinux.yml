@@ -1,0 +1,6 @@
+---
+- hosts: all
+  
+  tasks:
+    - name: Install libselinux-python 
+- selinux: state=disabled
